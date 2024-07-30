@@ -17,6 +17,9 @@ Bienvenido al proyecto "Dragon Ball Planets", una aplicación web para explorar 
 - **Bootstrap**: Framework CSS para componentes y diseño responsivo.
 - **Dragon Ball API**: Fuente de datos para los planetas.
 
+## Ver proyecto Funcionando: 
+-https://juancitopena.github.io/DRAGON_BALL_Z_V1/planets.html
+
 ## Instalación y Ejecución
 
 1. **Clonar el Repositorio**:
