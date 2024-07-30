@@ -10,17 +10,28 @@ Este proyecto muestra información sobre los personajes y planetas del universo 
 
 ## Galería de Planetas
 
+# Dragon Ball Project
+
+[El contenido anterior del README se mantiene igual]
+
+## Galería de Planetas
+
 Aquí tienes una vista previa de algunos de los planetas más icónicos del universo Dragon Ball:
 
 | Imagen 1 | Imagen 2 | Imagen 3 |
 |:---------:|:---------:|:---------:|
-| ![Image](1.png) | ![Image](2.png) | ![Image](3.png) |
+| ![Imagen 1](Image/1.png) | ![Imagen 2](Image/2.png) | ![Imagen 3](Image/3.png) |
 | Portada 1 | Portada 2 | Portada 3 |
 
 | Imagen 4 | Imagen 5 | Imagen 6 |
 |:---------:|:---------:|:---------:|
-| ![Image](4.png) | ![Image](5.png) | ![Image](6.png) |
+| ![Imagen 4](Image/4.png) | ![Imagen 5](Image/5.png) | ![Imagen 6](Image/6.png) |
 | Portada 4 | Portada 5 | Portada 6 |
+
+**Nota:** Asegúrate de que las imágenes se encuentren en la carpeta `Image` y de que las rutas sean correctas.
+
+[El resto del contenido del README se mantiene igual]
+
 
 *Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.*
 
