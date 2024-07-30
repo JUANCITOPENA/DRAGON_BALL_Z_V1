@@ -41,6 +41,9 @@ El descubrimiento de esta API y su uso en el proyecto se debe a [Miguel Ángel D
 | ![Imagen 4](Image/4.png) | ![Imagen 5](Image/5.png) | ![Imagen 6](Image/6.png) |
 | Portada 4 | Portada 5 | Portada 6 |
 
+## Ver Proyecto: [Web](https://juancitopena.github.io/DRAGON_BALL_Z_V1/planets.html)
+
+
 
 ## Estructura del Proyecto
 
