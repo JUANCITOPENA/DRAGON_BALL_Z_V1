@@ -2,6 +2,23 @@
 
 Este proyecto muestra información sobre los personajes y planetas del universo Dragon Ball. Está diseñado con HTML, CSS y JavaScript utilizando Bootstrap para el estilo y la funcionalidad de los modales y paginación.
 
+## API de Dragon Ball
+
+El proyecto utiliza la [Dragon Ball API](https://web.dragonball-api.com/documentation), una API pública que proporciona datos detallados sobre personajes, planetas, y más del universo Dragon Ball. Esta API es una excelente herramienta para acceder a información rica y variada, lo que permite integrar contenido relevante y actualizado en tus aplicaciones y proyectos.
+
+### Recursos Disponibles en la API
+
+La API de Dragon Ball ofrece los siguientes recursos:
+
+- **Personajes**: Información sobre los personajes principales y secundarios, incluyendo detalles como nombre, imagen, descripción, y atributos específicos.
+- **Planetas**: Datos sobre los planetas del universo Dragon Ball, con información visual y descriptiva.
+- **Otras Entidades**: Dependiendo de la versión de la API, también puede ofrecer información sobre otras entidades relevantes.
+
+### Documentación
+
+Puedes consultar la documentación completa de la API en [Dragon Ball API Documentation](https://web.dragonball-api.com/documentation) para obtener detalles sobre los endpoints disponibles, ejemplos de uso, y parámetros necesarios para realizar solicitudes.
+
+
 ## Características
 
 - **Página de Personajes (`index.html`):** Muestra una lista de personajes de Dragon Ball. Cada personaje tiene una tarjeta con su imagen, nombre y un botón para ver detalles en un modal.
