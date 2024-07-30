@@ -14,12 +14,12 @@ Aquí tienes una vista previa de algunos de los planetas más icónicos del univ
 
 | Planeta 1 | Planeta 2 | Planeta 3 |
 |:---------:|:---------:|:---------:|
-| ![Planeta 1](/api/placeholder/300/200) | ![Planeta 2](/api/placeholder/300/200) | ![Planeta 3](/api/placeholder/300/200) |
+| ![Imagen 1](1.png/300/200) | ![Imagen 2](2.png/300/200) | ![Imagen 3](3.png/300/200) |
 | Nombre del Planeta 1 | Nombre del Planeta 2 | Nombre del Planeta 3 |
 
 | Planeta 4 | Planeta 5 | Planeta 6 |
 |:---------:|:---------:|:---------:|
-| ![Planeta 4](/api/placeholder/300/200) | ![Planeta 5](/api/placeholder/300/200) | ![Planeta 6](/api/placeholder/300/200) |
+| ![Imagen 4](4.png/300/200) | ![Imagen  5](5.png/300/200) | ![Imagen 6](6.png/300/200) |
 | Nombre del Planeta 4 | Nombre del Planeta 5 | Nombre del Planeta 6 |
 
 *Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.*
