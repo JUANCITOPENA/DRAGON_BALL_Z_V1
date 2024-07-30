@@ -18,6 +18,10 @@ La API de Dragon Ball ofrece los siguientes recursos:
 
 Puedes consultar la documentación completa de la API en [Dragon Ball API Documentation](https://web.dragonball-api.com/documentation) para obtener detalles sobre los endpoints disponibles, ejemplos de uso, y parámetros necesarios para realizar solicitudes.
 
+## Créditos
+
+El descubrimiento de esta API y su uso en el proyecto se debe a [Miguel Ángel Durán García en linkedin](https://www.linkedin.com/feed/update/urn:li:activity:7223701767979433985/?commentUrn=urn%3Ali%3Acomment%3A(ugcPost%3A7223701767308365825%2C7223736086374588416)&dashCommentUrn=urn%3Ali%3Afsd_comment%3A(7223736086374588416%2Curn%3Ali%3AugcPost%3A7223701767308365825)).
+
 
 ## Características
 
