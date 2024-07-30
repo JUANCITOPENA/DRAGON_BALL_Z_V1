@@ -57,7 +57,7 @@ Para ejecutar el proyecto localmente, sigue estos pasos:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/dragon-ball-project.git
+   git clone https://github.com/JUANCITOPENA/DRAGON_BALL_Z_V1.git
    ```
 
 2. Navega al directorio del proyecto:
@@ -99,4 +99,4 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más 
 
 ## Contacto
 
-Para preguntas o comentarios, por favor contacta a [tu correo electrónico].
+Para preguntas o comentarios, por favor contacta a [Juancito.pena@gmail.com].
