@@ -1,13 +1,12 @@
-# Dragon Ball Planets
+# Dragon Ball Project API Dragon Ball Z
 
-Bienvenido al proyecto "Dragon Ball Planets", una aplicación web para explorar los planetas del universo Dragon Ball. Utiliza la API de Dragon Ball para mostrar información detallada sobre cada planeta, incluyendo su imagen y descripción.
+Este proyecto muestra información sobre los personajes y planetas del universo Dragon Ball. Está diseñado con HTML, CSS y JavaScript utilizando Bootstrap para el estilo y la funcionalidad de los modales y paginación.
 
 ## Características
 
-- **Búsqueda de Planetas**: Filtra los planetas por nombre usando una barra de búsqueda.
-- **Paginación**: Navega a través de los planetas con paginación.
-- **Vista Detallada**: Haz clic en un planeta para ver una ventana modal con información detallada.
-- **Interfaz Intuitiva**: Diseño limpio y fácil de usar con animaciones.
+- **Página de Personajes (`index.html`):** Muestra una lista de personajes de Dragon Ball. Cada personaje tiene una tarjeta con su imagen, nombre y un botón para ver detalles en un modal.
+- **Página de Planetas (`planets.html`):** Muestra una lista de planetas de Dragon Ball. Cada planeta tiene una tarjeta con su imagen y nombre, y un botón para ver detalles en un modal.
+- **Búsqueda y Paginación:** Ambas páginas incluyen funcionalidad de búsqueda y paginación para filtrar y navegar por los personajes y planetas.
 
 ## Galería de Planetas
 
@@ -25,77 +24,61 @@ Aquí tienes una vista previa de algunos de los planetas más icónicos del univ
 
 *Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.*
 
-## Tecnologías
-
-- **HTML**: Estructura del contenido.
-- **CSS**: Estilos y animaciones.
-- **JavaScript**: Lógica de la aplicación y manipulación del DOM.
-- **Bootstrap**: Framework CSS para componentes y diseño responsivo.
-- **Dragon Ball API**: Fuente de datos para los planetas.
-
-## Instalación y Ejecución
-
-1. **Clonar el Repositorio**:
-
-   ```bash
-   git clone https://github.com/tu-usuario/dragon-ball-planets.git
-   ```
-
-2. **Abrir el Proyecto**:
-   Navega a la carpeta del proyecto:
-
-   ```bash
-   cd dragon-ball-planets
-   ```
-
-3. **Abrir el Archivo `index.html`**:
-   Puedes abrir el archivo `index.html` directamente en tu navegador web para ver la aplicación en funcionamiento.
-
 ## Estructura del Proyecto
 
-- `index.html`: Página principal que muestra la lista de planetas.
-- `planets.html`: Página que muestra la lista de planetas y permite buscar y filtrar.
-- `styles.css`: Archivo de estilos para personalizar la apariencia.
-- `script.js`: Archivo JavaScript con la lógica de la aplicación.
+El proyecto está compuesto por los siguientes archivos:
 
-## Uso
+- `index.html`: Página principal que muestra la lista de personajes.
+- `planets.html`: Página secundaria que muestra la lista de planetas.
+- `styles.css`: Archivo CSS que contiene los estilos personalizados.
+- `script.js`: Archivo JavaScript que maneja la lógica de la aplicación.
 
-1. **Buscar Planetas**: Usa la barra de búsqueda en la parte superior para filtrar los planetas por nombre.
-2. **Navegar entre Páginas**: Utiliza los botones de paginación para navegar a través de las páginas de planetas.
-3. **Ver Detalles**: Haz clic en el botón "Ver Planeta" en la tarjeta de un planeta para abrir una ventana modal con más detalles.
+## Instalación y Uso
+
+Para ejecutar el proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/dragon-ball-project.git
+   ```
+
+2. Navega al directorio del proyecto:
+   ```bash
+   cd dragon-ball-project
+   ```
+
+3. Abre `index.html` y `planets.html` en tu navegador web.
+
+## Descripción de los Archivos
+
+### `index.html`
+- **Descripción:** Muestra una lista de personajes.
+- **Modales:** Utiliza un modal para mostrar detalles del personaje cuando se hace clic en el botón "Ver Detalles".
+- **Búsqueda y Paginación:** Incluye funcionalidad de búsqueda y paginación para filtrar y navegar por los personajes.
+
+### `planets.html`
+- **Descripción:** Muestra una lista de planetas.
+- **Modales:** Utiliza un modal para mostrar detalles del planeta cuando se hace clic en el botón "Ver Planeta".
+- **Búsqueda y Paginación:** Incluye funcionalidad de búsqueda y paginación para filtrar y navegar por los planetas.
+
+## API Utilizada
+
+- **Dragon Ball API:** Proporciona datos sobre personajes y planetas de Dragon Ball.
 
 ## Contribuciones
 
-Las contribuciones son bienvenidas. Si deseas contribuir a este proyecto, sigue estos pasos:
+Las contribuciones al proyecto son bienvenidas. Si deseas contribuir, por favor sigue estos pasos:
 
-1. **Fork el Repositorio**.
-2. **Crea una Rama Nueva**:
-
-   ```bash
-   git checkout -b nombre-de-la-rama
-   ```
-
-3. **Haz tus Cambios** y **Commit**:
-
-   ```bash
-   git add .
-   git commit -m "Descripción de los cambios"
-   ```
-
-4. **Push a tu Repositorio**:
-
-   ```bash
-   git push origin nombre-de-la-rama
-   ```
-
-5. **Abre un Pull Request** en el repositorio original.
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-caracteristica`).
+3. Realiza tus cambios y confirma (`git commit -am 'Añadir nueva característica'`).
+4. Empuja tus cambios (`git push origin feature/nueva-caracteristica`).
+5. Crea una nueva solicitud de extracción (pull request).
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ## Contacto
 
-Para más información, puedes contactarme a través de tu-email@example.com.
-
-¡Gracias por visitar el proyecto!
+Para preguntas o comentarios, por favor contacta a [tu correo electrónico].
