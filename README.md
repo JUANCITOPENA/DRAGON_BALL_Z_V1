@@ -18,7 +18,8 @@ Bienvenido al proyecto "Dragon Ball Planets", una aplicación web para explorar 
 - **Dragon Ball API**: Fuente de datos para los planetas.
 
 ## Ver proyecto Funcionando: 
--https://juancitopena.github.io/DRAGON_BALL_Z_V1/planets.html
+
+https://juancitopena.github.io/DRAGON_BALL_Z_V1/index.html
 
 ## Instalación y Ejecución
 
