@@ -79,9 +79,18 @@ Para ejecutar el proyecto localmente, sigue estos pasos:
 - **Modales:** Utiliza un modal para mostrar detalles del planeta cuando se hace clic en el botón "Ver Planeta".
 - **Búsqueda y Paginación:** Incluye funcionalidad de búsqueda y paginación para filtrar y navegar por los planetas.
 
-## API Utilizada
+## Diseño Responsive
 
-- **Dragon Ball API:** Proporciona datos sobre personajes y planetas de Dragon Ball.
+La sección de diseño responsive muestra cómo se adapta el proyecto en diferentes dispositivos.
+
+### Vista en Dispositivo 1
+
+| ![Imagen 1](Image/7.png) |
+
+### Vista en Dispositivo 2
+
+| ![Imagen 2](Image/8.png) |
+
 
 ## Contribuciones
 
