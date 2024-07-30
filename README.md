@@ -24,6 +24,31 @@ Aquí tienes una vista previa de algunos de los planetas más icónicos del univ
 
 *Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.*
 
+# Dragon Ball Project
+
+[El contenido anterior del README se mantiene igual]
+
+## Galería de Planetas
+
+Aquí tienes una vista previa de algunos de los planetas más icónicos del universo Dragon Ball:
+
+| Imagen 1 | Imagen 2 | Imagen 3 |
+|:---------:|:---------:|:---------:|
+| ![Image](1.png) | ![Image](2.png) | ![Image](3.png) |
+| Portada 1 | Portada 2 | Portada 3 |
+
+| Imagen 4 | Imagen 5 | Imagen 6 |
+|:---------:|:---------:|:---------:|
+| ![Image](4.png) | ![Image](5.png) | ![Image](6.png) |
+| Portada 4 | Portada 5 | Portada 6 |
+
+Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.
+
+[El resto del contenido del README se mantiene igual]
+
+
+
+
 ## Estructura del Proyecto
 
 El proyecto está compuesto por los siguientes archivos:
