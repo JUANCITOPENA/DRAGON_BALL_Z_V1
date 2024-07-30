@@ -9,6 +9,22 @@ Bienvenido al proyecto "Dragon Ball Planets", una aplicación web para explorar 
 - **Vista Detallada**: Haz clic en un planeta para ver una ventana modal con información detallada.
 - **Interfaz Intuitiva**: Diseño limpio y fácil de usar con animaciones.
 
+## Galería de Planetas
+
+Aquí tienes una vista previa de algunos de los planetas más icónicos del universo Dragon Ball:
+
+| Planeta 1 | Planeta 2 | Planeta 3 |
+|:---------:|:---------:|:---------:|
+| ![Planeta 1](/api/placeholder/300/200) | ![Planeta 2](/api/placeholder/300/200) | ![Planeta 3](/api/placeholder/300/200) |
+| Nombre del Planeta 1 | Nombre del Planeta 2 | Nombre del Planeta 3 |
+
+| Planeta 4 | Planeta 5 | Planeta 6 |
+|:---------:|:---------:|:---------:|
+| ![Planeta 4](/api/placeholder/300/200) | ![Planeta 5](/api/placeholder/300/200) | ![Planeta 6](/api/placeholder/300/200) |
+| Nombre del Planeta 4 | Nombre del Planeta 5 | Nombre del Planeta 6 |
+
+*Nota: Reemplaza las URLs de las imágenes con las URLs reales de los planetas de Dragon Ball.*
+
 ## Tecnologías
 
 - **HTML**: Estructura del contenido.
@@ -16,10 +32,6 @@ Bienvenido al proyecto "Dragon Ball Planets", una aplicación web para explorar 
 - **JavaScript**: Lógica de la aplicación y manipulación del DOM.
 - **Bootstrap**: Framework CSS para componentes y diseño responsivo.
 - **Dragon Ball API**: Fuente de datos para los planetas.
-
-## Ver proyecto Funcionando: 
-
-https://juancitopena.github.io/DRAGON_BALL_Z_V1/index.html
 
 ## Instalación y Ejecución
 
