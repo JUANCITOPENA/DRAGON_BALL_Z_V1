@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/41/d9/2b/41d92bfeba7936768e399c305b60736a.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐲Dragon Ball Characters</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">🐲Dragon Ball Characters 🌍</h1>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search characters by name">
+                    <button class="btn btn-primary" id="searchButton">Search</button>
+                    <button class="btn btn-secondary" id="clearButton">Clear</button>
+                    <a href="planets.html" class="btn btn-success ms-2">View Planets</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="characterContainer" class="row row-cols-1 row-cols-md-4 g-4 mb-4">
+            <!-- Character cards will be inserted here -->
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination buttons will be inserted here -->
+            </ul>
+        </nav>
+    </div>
+
+  <!-- Modal for Character Details -->
+<div class="modal fade" id="characterModal" tabindex="-1" aria-labelledby="characterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="characterModalLabel">Character Details</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img id="characterImage" src="" alt="Character Image" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <h5 id="characterName"></h5>
+                        <p id="characterDescription"></p>
+                        <ul id="characterDetails" class="list-group list-group-flush"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="index.html" class="btn btn-primary mx-auto">Go to Main Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentPage = 1;
+        const itemsPerPage = 12;
+        let allCharacters = [];
+        let filteredCharacters = [];
+
+        function createCharacterCard(character) {
+            return `
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="${character.image}" class="card-img-top" alt="${character.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${character.name}</h5>
+                            <button class="btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#characterModal" onclick="showCharacterDetails(${character.id})">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function fetchCharacters() {
+            try {
+                const response = await fetch('https://dragonball-api.com/api/characters?limit=1000');
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching characters:', error);
+                return null;
+            }
+        }
+
+        function createPaginationButtons(meta) {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            pagination.innerHTML += `
+                <li class="page-item ${meta.currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${meta.currentPage - 1}">Previous</a>
+                </li>
+            `;
+
+            for (let i = 1; i <= meta.totalPages; i++) {
+                pagination.innerHTML += `
+                    <li class="page-item ${i === meta.currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>
+                `;
+            }
+
+            pagination.innerHTML += `
+                <li class="page-item ${meta.currentPage === meta.totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${meta.currentPage + 1}">Next</a>
+                </li>
+            `;
+
+            pagination.querySelectorAll('.page-link').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const newPage = parseInt(e.target.getAttribute('data-page'));
+                    if (newPage !== currentPage && newPage > 0 && newPage <= meta.totalPages) {
+                        currentPage = newPage;
+                        updateDisplayedCharacters();
+                        createPaginationButtons({ currentPage, totalPages: Math.ceil(filteredCharacters.length / itemsPerPage) });
+                    }
+                });
+            });
+        }
+
+        function filterCharactersByName(characters, name) {
+            return characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase()));
+        }
+
+        function paginateCharacters(characters, page, itemsPerPage) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = page * itemsPerPage;
+            return characters.slice(startIndex, endIndex);
+        }
+
+        async function displayCharacters() {
+            const container = document.getElementById('characterContainer');
+            container.innerHTML = '<div class="col-12 text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+
+            const charactersData = await fetchCharacters();
+
+            if (charactersData && charactersData.items) {
+                allCharacters = charactersData.items;
+                filteredCharacters = allCharacters;
+                updateDisplayedCharacters();
+                createPaginationButtons({ currentPage, totalPages: Math.ceil(filteredCharacters.length / itemsPerPage) });
+            } else {
+                container.innerHTML = '<div class="col-12 text-center"><p>Error loading characters. Please try again later.</p></div>';
+            }
+        }
+
+        function updateDisplayedCharacters() {
+            const container = document.getElementById('characterContainer');
+            container.innerHTML = '';
+
+            const paginatedCharacters = paginateCharacters(filteredCharacters, currentPage, itemsPerPage);
+            if (paginatedCharacters.length > 0) {
+                paginatedCharacters.forEach(character => {
+                    container.innerHTML += createCharacterCard(character);
+                });
+            } else {
+                container.innerHTML = '<div class="col-12 text-center"><p>No characters found.</p></div>';
+            }
+        }
+
+        function searchCharacters() {
+            const searchInput = document.getElementById('searchInput').value;
+            filteredCharacters = filterCharactersByName(allCharacters, searchInput);
+            currentPage = 1;
+            updateDisplayedCharacters();
+            createPaginationButtons({ currentPage, totalPages: Math.ceil(filteredCharacters.length / itemsPerPage) });
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filteredCharacters = allCharacters;
+            currentPage = 1;
+            updateDisplayedCharacters();
+            createPaginationButtons({ currentPage, totalPages: Math.ceil(filteredCharacters.length / itemsPerPage) });
+        }
+
+        async function showCharacterDetails(characterId) {
+            const character = allCharacters.find(c => c.id === characterId);
+            if (character) {
+                document.getElementById('characterName').textContent = character.name;
+                document.getElementById('characterDescription').textContent = character.description;
+                document.getElementById('characterImage').src = character.image || 'https://via.placeholder.com/300';
+                const characterDetails = document.getElementById('characterDetails');
+                characterDetails.innerHTML = `
+                    <li class="list-group-item"><strong>Species:</strong> ${character.species}</li>
+                    <li class="list-group-item"><strong>Gender:</strong> ${character.gender}</li>
+                    <li class="list-group-item"><strong>Ki:</strong> ${character.ki}</li>
+                    <li class="list-group-item"><strong>Affiliation:</strong> ${character.affiliation}</li>
+                `;
+                const modal = new bootstrap.Modal(document.getElementById('characterModal'));
+                modal.show();
+            }
+        }
+
+        document.getElementById('searchButton').addEventListener('click', searchCharacters);
+        document.getElementById('clearButton').addEventListener('click', clearSearch);
+
+        displayCharacters();
+    </script>
+</body>
+</html>
+

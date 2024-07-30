@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/41/d9/2b/41d92bfeba7936768e399c305b60736a.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Planets</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">🐲 Dragon Ball Planets 🌍</h1>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="planetSearchInput" class="form-control" placeholder="Search planets by name">
+                    <button class="btn btn-primary" id="planetSearchButton">Search</button>
+                    <button class="btn btn-secondary" id="planetClearButton">Clear</button>
+                    <a href="index.html" class="btn btn-danger ms-2">View Characters</a>
+                </div>
+            </div>
+        </div>
+        <div id="planetContainer" class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+            <!-- Planet cards will be inserted here -->
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="planetPagination">
+                <!-- Pagination buttons will be inserted here -->
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Modal for Planet Details -->
+    <div class="modal fade" id="planetModal" tabindex="-1" aria-labelledby="planetModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="planetModalLabel">Planet Details</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img id="planetImage" src="" alt="Planet Image" class="img-fluid">
+                        </div>
+                        <div class="col-md-8">
+                            <h5 id="planetName"></h5>
+                            <p id="planetDescription"></p>
+                            <ul id="planetDetails" class="list-group list-group-flush"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="planets.html" class="btn btn-primary mx-auto">Go to Main Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentPlanetPage = 1;
+        const planetsPerPage = 12;
+        let allPlanets = [];
+        let filteredPlanets = [];
+
+        function createPlanetCard(planet) {
+            return `
+                <div class="col">
+                    <div class="card h-100 shadow">
+                        <img src="${planet.image}" class="card-img-top" alt="${planet.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${planet.name}</h5>
+                            <button class="btn btn-info mt-3" data-bs-toggle="modal" data-bs-target="#planetModal" onclick="showPlanetDetails(${planet.id})">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function fetchPlanets() {
+            try {
+                const response = await fetch('https://dragonball-api.com/api/planets?limit=1000');
+                return await response.json();
+            } catch (error) {
+                console.error('Error fetching planets:', error);
+                return null;
+            }
+        }
+
+        function createPaginationButtons(meta) {
+            const pagination = document.getElementById('planetPagination');
+            pagination.innerHTML = '';
+
+            pagination.innerHTML += `
+                <li class="page-item ${meta.currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${meta.currentPage - 1}">Previous</a>
+                </li>
+            `;
+
+            for (let i = 1; i <= meta.totalPages; i++) {
+                pagination.innerHTML += `
+                    <li class="page-item ${i === meta.currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>
+                `;
+            }
+
+            pagination.innerHTML += `
+                <li class="page-item ${meta.currentPage === meta.totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${meta.currentPage + 1}">Next</a>
+                </li>
+            `;
+
+            pagination.querySelectorAll('.page-link').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const newPage = parseInt(e.target.getAttribute('data-page'));
+                    if (newPage !== currentPlanetPage && newPage > 0 && newPage <= meta.totalPages) {
+                        currentPlanetPage = newPage;
+                        updateDisplayedPlanets();
+                        createPaginationButtons({ currentPage: currentPlanetPage, totalPages: Math.ceil(filteredPlanets.length / planetsPerPage) });
+                    }
+                });
+            });
+        }
+
+        function filterPlanetsByName(planets, name) {
+            return planets.filter(planet => planet.name.toLowerCase().includes(name.toLowerCase()));
+        }
+
+        function paginatePlanets(planets, page, itemsPerPage) {
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = page * itemsPerPage;
+            return planets.slice(startIndex, endIndex);
+        }
+
+        async function displayPlanets() {
+            const container = document.getElementById('planetContainer');
+            container.innerHTML = '<div class="col-12 text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
+
+            const planetsData = await fetchPlanets();
+
+            if (planetsData && planetsData.items) {
+                allPlanets = planetsData.items;
+                filteredPlanets = allPlanets;
+                updateDisplayedPlanets();
+                createPaginationButtons({ currentPage: currentPlanetPage, totalPages: Math.ceil(filteredPlanets.length / planetsPerPage) });
+            } else {
+                container.innerHTML = '<div class="col-12 text-center"><p>Error loading planets. Please try again later.</p></div>';
+            }
+        }
+
+        function updateDisplayedPlanets() {
+            const container = document.getElementById('planetContainer');
+            container.innerHTML = '';
+
+            const paginatedPlanets = paginatePlanets(filteredPlanets, currentPlanetPage, planetsPerPage);
+
+            if (paginatedPlanets.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p>No planets found.</p></div>';
+            } else {
+                paginatedPlanets.forEach(planet => {
+                    container.innerHTML += createPlanetCard(planet);
+                });
+            }
+        }
+
+        function showPlanetDetails(planetId) {
+            const planet = allPlanets.find(p => p.id === planetId);
+
+            if (planet) {
+                document.getElementById('planetImage').src = planet.image;
+                document.getElementById('planetName').textContent = planet.name;
+                document.getElementById('planetDescription').textContent = planet.description || 'No description available.';
+             ;
+            }
+        }
+
+        document.getElementById('planetSearchButton').addEventListener('click', () => {
+            const searchInput = document.getElementById('planetSearchInput').value;
+            filteredPlanets = filterPlanetsByName(allPlanets, searchInput);
+            currentPlanetPage = 1;
+            updateDisplayedPlanets();
+            createPaginationButtons({ currentPage: currentPlanetPage, totalPages: Math.ceil(filteredPlanets.length / planetsPerPage) });
+        });
+
+        document.getElementById('planetClearButton').addEventListener('click', () => {
+            document.getElementById('planetSearchInput').value = '';
+            filteredPlanets = allPlanets;
+            currentPlanetPage = 1;
+            updateDisplayedPlanets();
+            createPaginationButtons({ currentPage: currentPlanetPage, totalPages: Math.ceil(filteredPlanets.length / planetsPerPage) });
+        });
+
+        displayPlanets();
+    </script>
+</body>
+</html>
