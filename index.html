@@ -189,19 +189,22 @@
             const character = allCharacters.find(c => c.id === characterId);
             if (character) {
                 document.getElementById('characterName').textContent = character.name;
-                document.getElementById('characterDescription').textContent = character.description;
+                document.getElementById('characterDescription').textContent = `Description: ${character.description}`;
                 document.getElementById('characterImage').src = character.image || 'https://via.placeholder.com/300';
+        
                 const characterDetails = document.getElementById('characterDetails');
                 characterDetails.innerHTML = `
-                    <li class="list-group-item"><strong>Species:</strong> ${character.species}</li>
+                    <li class="list-group-item"><strong>Species:</strong> ${character.race || "Unknown"}</li>
                     <li class="list-group-item"><strong>Gender:</strong> ${character.gender}</li>
-                    <li class="list-group-item"><strong>Ki:</strong> ${character.ki}</li>
+                    <li class="list-group-item"><strong>Ki:</strong> ${character.ki || "Unknown"}</li>
                     <li class="list-group-item"><strong>Affiliation:</strong> ${character.affiliation}</li>
                 `;
+        
                 const modal = new bootstrap.Modal(document.getElementById('characterModal'));
                 modal.show();
             }
         }
+        
 
         document.getElementById('searchButton').addEventListener('click', searchCharacters);
         document.getElementById('clearButton').addEventListener('click', clearSearch);
